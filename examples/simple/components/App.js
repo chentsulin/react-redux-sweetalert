@@ -3,7 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
-import { reducer } from 'react-redux-sweetalert';
+import { reducer } from 'react-redux-sweetalert'; // eslint-disable-line
 import 'sweetalert/dist/sweetalert.css';
 
 import Main from './Main';

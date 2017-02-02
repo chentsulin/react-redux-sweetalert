@@ -1,7 +1,7 @@
-/* eslint no-var: 0 */
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
 
-var path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',

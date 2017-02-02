@@ -1,12 +1,15 @@
-/* eslint no-var: 0, no-console: 0, prefer-template: 0 */
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config');
-var port = process.env.PORT || 3000;
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
 
-var app = express();
-var compiler = webpack(config);
+const express = require('express');
+const webpack = require('webpack');
+
+const config = require('./webpack.config');
+
+const port = process.env.PORT || 3000;
+
+const app = express();
+const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath,
@@ -17,15 +20,15 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(port, 'localhost', function (err) {
+app.listen(port, 'localhost', err => {
   if (err) {
-    console.log(err);
+    console.log(err); // eslint-disable-line no-console
     return;
   }
 
-  console.log('Listening at http://localhost:' + port);
+  console.log(`Listening at http://localhost:${port}`); // eslint-disable-line no-console
 });
