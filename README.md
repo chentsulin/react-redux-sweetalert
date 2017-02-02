@@ -31,6 +31,8 @@ render(
 );
 ```
 
+Checkout full examples [here](./examples).
+
 
 ## API
 
