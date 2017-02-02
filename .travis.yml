@@ -4,8 +4,7 @@ node_js:
   - "7"
   - "6"
   - "4"
-cache:
-  directories:
-    - node_modules
+install: npm i && (cd examples/simple && npm i)
+cache: yarn
 script: "npm run lint && npm run test:cov"
 after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
