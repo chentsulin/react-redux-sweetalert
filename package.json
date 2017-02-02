@@ -1,6 +1,6 @@
 {
   "name": "react-redux-sweetalert",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "SweetAlert with redux-style actions, reducers API",
   "main": "lib/index.js",
   "license": "MIT",
