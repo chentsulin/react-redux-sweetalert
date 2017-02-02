@@ -13,13 +13,10 @@ const initialState = {
 
 
 export default createReducer(initialState, {
-  [SHOW]: (state, { payload }) => {
-    console.log(state, payload);
-    return {
-      show: true,
-      ...payload,
-    };
-  },
+  [SHOW]: (state, { payload }) => ({
+    show: true,
+    ...payload,
+  }),
 
   [REPLACE]: (state, { payload }) => ({
     ...state,

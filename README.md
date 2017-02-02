@@ -5,7 +5,7 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Dependency Status][david_img]][david_site]
 
-> My module
+> SweetAlert with Redux-style actions, reducers API
 
 
 ## Install
@@ -18,31 +18,29 @@ $ npm install react-redux-sweetalert
 ## Usage
 
 ```js
-var reactReduxSweetalert = require('react-redux-sweetalert');
+const rootReducer = combineReducers({
+  sweetalert: reducer,
+});
 
-reactReduxSweetalert('test');
-//=>
+const store = createStore(rootReducer);
+
+render(
+  <Provider store={store}>
+    <ReduxSweetAlert />
+  </Provider>
+);
 ```
+
 
 ## API
 
-### reactReduxSweetalert(input, [options])
+### actions
 
-#### input
+#### showAlert
 
-*Required*
-Type: `string`
+#### replaceAlert
 
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `boolean`
-Default: `false`
-
-Lorem ipsum.
+#### dismissAlert
 
 
 ## License

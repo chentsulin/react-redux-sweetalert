@@ -8,7 +8,10 @@ const mapStateToProps = state => ({
 
 class ReduxSweetAlert extends Component {
   static propTypes = {
-    sweetalert: PropTypes.object.isRequired,
+    sweetalert: PropTypes.shape({
+      show: PropTypes.bool.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   render() {
