@@ -5,6 +5,7 @@ import ReduxSweetAlert, { showAlert, dismissAlert } from 'react-redux-sweetalert
 
 class Main extends Component {
   static propTypes = {
+    dismissAlert: PropTypes.func.isRequired,
     showAlert: PropTypes.func.isRequired,
   };
   render() {
@@ -14,6 +15,7 @@ class Main extends Component {
           onClick={() => this.props.showAlert({
             title: 'Demo',
             text: 'SweetAlert in React',
+            onConfirm: this.props.dismissAlert,
           })}
         >Alert</button>
         <ReduxSweetAlert />
