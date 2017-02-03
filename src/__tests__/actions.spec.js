@@ -20,6 +20,16 @@ describe('showAlert', () => {
       type: SHOW,
       payload: { title: 'show' },
     });
+    expect(console.error).not.toBeCalled();
+  });
+
+  it('should allow custom option in payload', () => {
+    const payload = {
+      title: 'show',
+      onCancel: () => {},
+    };
+    showAlert(payload);
+    expect(console.error).not.toBeCalled();
   });
 
   it('should warn for invalid props', () => {

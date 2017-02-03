@@ -31,19 +31,87 @@ render(
 );
 ```
 
-Checkout full examples [here](./examples).
-
-
 ## API
+
+### types
+
+#### Payload
+
+```js
+{
+  // sweetalert option
+  title: string,
+  text?: string,
+  type?: string,
+  customClass?: string,
+  showCancelButton?: boolean,
+  showConfirmButton?: boolean,
+  confirmButtonText?: string,
+  confirmButtonColor?: string,
+  cancelButtonText?: string,
+  imageUrl?: string,
+  imageSize?: string,
+  html?: boolean,
+  animation?: boolean|string,
+  inputType?: string,
+  inputValue?: string,
+  inputPlaceholder?: string,
+  showLoaderOnConfirm?: boolean,
+
+  // custom option
+  onConfirm?: Function,
+  onCancel?: Function,
+  onClose?: Function,
+  onEscapeKey?: Function,
+  onOutsideClick?: Function,
+}
+```
 
 ### actions
 
-#### showAlert
+#### showAlert(payload: Payload)
 
-#### replaceAlert
+#### replaceAlert(payload: Payload)
 
-#### dismissAlert
+#### dismissAlert()
 
+## Examples
+
+```js
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import ReduxSweetAlert, { showAlert, dismissAlert } from 'react-redux-sweetalert'; // eslint-disable-line
+
+
+class Main extends Component {
+  static propTypes = {
+    dismissAlert: PropTypes.func.isRequired,
+    showAlert: PropTypes.func.isRequired,
+  };
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() => this.props.showAlert({
+            title: 'Demo',
+            text: 'SweetAlert in React',
+            onConfirm: this.props.dismissAlert,
+          })}
+        >Alert</button>
+        <ReduxSweetAlert />
+      </div>
+    );
+  }
+}
+
+
+export default connect(null, {
+  showAlert,
+  dismissAlert,
+})(Main);
+```
+
+Checkout full examples [here](./examples).
 
 ## License
 

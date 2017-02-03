@@ -6,6 +6,7 @@ export const DISMISS = '@sweetalert/DISMISS';
 
 
 const ALLOWS_KEYS = [
+  // sweetalert option
   'title',
   'text',
   'type',
@@ -23,6 +24,13 @@ const ALLOWS_KEYS = [
   'inputValue',
   'inputPlaceholder',
   'showLoaderOnConfirm',
+
+  // custom option
+  'onConfirm',
+  'onCancel',
+  'onClose',
+  'onEscapeKey',
+  'onOutsideClick',
 ];
 
 function getInvalidProps(payload) {
