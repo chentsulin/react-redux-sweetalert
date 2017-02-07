@@ -20,7 +20,7 @@ export default function isPlainObject(o) {
   if (isObjectObject(prot) === false) return false;
 
   // If constructor does not have an Object-specific method
-  if (prot.hasOwnProperty('isPrototypeOf') === false) {
+  if (prot.hasOwnProperty('isPrototypeOf') === false) { // eslint-disable-line no-prototype-builtins
     return false;
   }
 
