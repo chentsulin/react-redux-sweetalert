@@ -6,6 +6,7 @@ import ReduxSweetAlert, {
   replaceAlert,
   dismissAlert,
   reducer,
+  immutableReducer,
 } from '../';
 
 
@@ -18,4 +19,5 @@ it('should export correctly', () => {
   expect(replaceAlert).toBeDefined();
   expect(dismissAlert).toBeDefined();
   expect(reducer).toBeDefined();
+  expect(immutableReducer).toBeDefined();
 });

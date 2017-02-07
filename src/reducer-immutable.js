@@ -29,7 +29,7 @@ try {
       ...payload,
     }),
 
-    [DISMISS]: () => initialState,
+    [DISMISS]: () => initialState.toJS(),
   });
 } catch (error) {
   reducer = () => {
