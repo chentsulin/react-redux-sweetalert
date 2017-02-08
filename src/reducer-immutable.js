@@ -33,7 +33,7 @@ try {
   });
 } catch (error) {
   reducer = () => {
-    warning('You must install immutable-js for the immutable reducer to work!');
+    warning(false, 'You must install immutable-js for the immutable reducer to work!');
   };
 }
 
