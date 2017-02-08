@@ -18,11 +18,20 @@ $ npm install react-redux-sweetalert
 ## Usage
 
 ```js
+import React, { Component } from 'react';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { reducer } from 'react-redux-sweetalert';
+
 const rootReducer = combineReducers({
   sweetalert: reducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+	applyMiddleware(thunk),
+);
 
 render(
   <Provider store={store}>
@@ -30,6 +39,10 @@ render(
   </Provider>
 );
 ```
+
+You should import sweetalert.css from cdn, file, node_modules(sweetalert/dist/sweetalert.css) or wherever can find the css code.
+
+Checkout full examples [here](https://github.com/chentsulin/react-redux-sweetalert/tree/master/examples).
 
 ## API
 
