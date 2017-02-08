@@ -19,17 +19,17 @@ try {
   });
 
   reducer = createReducer(initialState, {
-    [SHOW]: (state, { payload }) => ({
+    [SHOW]: (state, { payload }) => fromJS({
       show: true,
       ...payload,
     }),
 
-    [REPLACE]: (state, { payload }) => ({
+    [REPLACE]: (state, { payload }) => fromJS({
       ...state,
       ...payload,
     }),
 
-    [DISMISS]: () => initialState.toJS(),
+    [DISMISS]: () => initialState,
   });
 } catch (error) {
   reducer = () => {

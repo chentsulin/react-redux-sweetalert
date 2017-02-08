@@ -17,7 +17,7 @@ it('should handle SHOW action', () => {
       title: 'show',
     },
   };
-  expect(immutableReducer(prevState, showAction)).toEqual({
+  expect(immutableReducer(prevState, showAction).toJS()).toEqual({
     show: true,
     title: 'show',
   });
@@ -34,7 +34,7 @@ it('should handle REPLACE action', () => {
       title: 'replace',
     },
   };
-  expect(immutableReducer(prevState, replaceAction)).toEqual({
+  expect(immutableReducer(prevState, replaceAction).toJS()).toEqual({
     show: true,
     title: 'replace',
   });
@@ -48,7 +48,7 @@ it('should handle DISMISS action', () => {
   const dismissAction = {
     type: DISMISS,
   };
-  expect(immutableReducer(prevState, dismissAction)).toEqual({
+  expect(immutableReducer(prevState, dismissAction).toJS()).toEqual({
     show: false,
     title: '',
   });
