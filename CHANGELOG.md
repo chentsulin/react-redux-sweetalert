@@ -1,3 +1,7 @@
+0.2.0 / 2017-02-09
+==================
+- [new] ImmutableJS support
+
 0.1.1 / 2017-02-03
 ==================
 - [fix] allow custom option in payload
