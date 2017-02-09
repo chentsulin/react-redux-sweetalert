@@ -28,6 +28,43 @@ describe('sweetalert', () => {
     expect(console.error).not.toBeCalled();
   });
 
+  it('should assign title directly', () => {
+    const dispatch = jest.fn();
+    sweetalert('Good job!')(dispatch);
+    const action = dispatch.mock.calls[0][0];
+    expect(action.type).toBe(SHOW);
+    expect(action.payload.title).toBe('Good job!');
+    expect(console.error).not.toBeCalled();
+  });
+
+  it('should assign title, text directly', () => {
+    const dispatch = jest.fn();
+    sweetalert(
+      'Good job!',
+      'You clicked the button!',
+    )(dispatch);
+    const action = dispatch.mock.calls[0][0];
+    expect(action.type).toBe(SHOW);
+    expect(action.payload.title).toBe('Good job!');
+    expect(action.payload.text).toBe('You clicked the button!');
+    expect(console.error).not.toBeCalled();
+  });
+
+  it('should assign title, text, type directly', () => {
+    const dispatch = jest.fn();
+    sweetalert(
+      'Good job!',
+      'You clicked the button!',
+      'success',
+    )(dispatch);
+    const action = dispatch.mock.calls[0][0];
+    expect(action.type).toBe(SHOW);
+    expect(action.payload.title).toBe('Good job!');
+    expect(action.payload.text).toBe('You clicked the button!');
+    expect(action.payload.type).toBe('success');
+    expect(console.error).not.toBeCalled();
+  });
+
   it('should allow custom option in payload', () => {
     const dispatch = jest.fn();
     const payload = {

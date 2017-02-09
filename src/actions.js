@@ -64,6 +64,18 @@ function warningInvalidProps(payload) {
   });
 }
 
+function parseArgument(f1, f2, f3) {
+  if (typeof f1 === 'string') {
+    const payload = {
+      title: f1,
+    };
+    if (f2) payload.text = f2;
+    if (f3) payload.type = f3;
+    return payload;
+  }
+  return f1;
+}
+
 
 function createCloseOnConfirmTransform(dispatch) {
   return ({ closeOnConfirm, ...payload }) => ({
@@ -123,7 +135,8 @@ function createTimerTransform(dispatch) {
 }
 
 
-export const sweetalert = payload => {
+export const sweetalert = (...args) => {
+  const payload = parseArgument(...args);
   warningInvalidProps(payload);
   return dispatch => {
     const closeOnConfirm = createCloseOnConfirmTransform(dispatch);
