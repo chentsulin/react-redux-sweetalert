@@ -9,7 +9,13 @@ import {
 
 beforeEach(() => {
   console.error = jest.fn();
+  jest.useFakeTimers();
 });
+
+afterEach(() => {
+  jest.useRealTimers();
+});
+
 
 describe('sweetalert', () => {
   it('should create SHOW action without error', () => {
@@ -130,6 +136,29 @@ describe('sweetalert', () => {
     expect(dispatch.mock.calls[1][0]).toEqual({
       type: DISMISS,
     });
+  });
+
+  it('should dispatch dismiss when timer set', () => {
+    const dispatch = jest.fn();
+    const payload = {
+      title: 'show',
+      timer: 1000,
+    };
+    sweetalert(payload)(dispatch);
+    jest.runTimersToTime(1100);
+    expect(dispatch.mock.calls[1][0]).toEqual({
+      type: DISMISS,
+    });
+  });
+
+  it('should not dispatch dismiss when no timer option', () => {
+    const dispatch = jest.fn();
+    const payload = {
+      title: 'show',
+    };
+    sweetalert(payload)(dispatch);
+    jest.runAllTimers();
+    expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
   it('should warn for invalid props', () => {

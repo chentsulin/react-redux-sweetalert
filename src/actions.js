@@ -27,6 +27,9 @@ const ALLOWS_KEYS = [
 
   'closeOnConfirm',
   'closeOnCancel',
+  'allowEscapeKey',
+  'allowOutsideClick',
+  'timer',
 
   // custom option
   'onConfirm',
@@ -36,9 +39,18 @@ const ALLOWS_KEYS = [
   'onOutsideClick',
 ];
 
-export const dismiss = () => ({
-  type: DISMISS,
-});
+
+let _timeout;
+
+export const dismiss = () => {
+  if (_timeout) {
+    clearTimeout(_timeout);
+    _timeout = null;
+  }
+  return ({
+    type: DISMISS,
+  });
+};
 
 
 function getInvalidProps(payload) {
@@ -101,6 +113,15 @@ function createAllowOutsideClickTransform(dispatch) {
   });
 }
 
+function createTimerTransform(dispatch) {
+  return ({ timer, ...payload }) => {
+    if (timer && typeof timer === 'number') {
+      _timeout = setTimeout(() => dispatch(dismiss()), timer);
+    }
+    return payload;
+  };
+}
+
 
 export const sweetalert = payload => {
   warningInvalidProps(payload);
@@ -109,12 +130,14 @@ export const sweetalert = payload => {
     const closeOnCancel = createCloseOnCancelTransform(dispatch);
     const allowEscapeKey = createAllowEscapeKeyTransform(dispatch);
     const allowOutsideClick = createAllowOutsideClickTransform(dispatch);
+    const timer = createTimerTransform(dispatch);
 
     const transform = compose(
       closeOnConfirm,
       closeOnCancel,
       allowEscapeKey,
       allowOutsideClick,
+      timer,
     );
 
     dispatch({
