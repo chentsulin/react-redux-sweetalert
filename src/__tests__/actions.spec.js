@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
 import {
   SHOW,
-  REPLACE,
   DISMISS,
   sweetalert,
-  replace,
   dismiss,
 } from '../actions';
 
@@ -40,25 +38,6 @@ describe('sweetalert', () => {
     );
   });
 });
-
-describe('replace', () => {
-  it('should create REPLACE action', () => {
-    const payload = { title: 'replace' };
-    expect(replace(payload)).toEqual({
-      type: REPLACE,
-      payload: { title: 'replace' },
-    });
-  });
-
-  it('should warn for invalid props', () => {
-    const payload = { titl: 'replace' };
-    replace(payload);
-    expect(console.error).toBeCalledWith(
-      'Warning: Property titl is invalid. You can not pass it to SweetAlert',
-    );
-  });
-});
-
 
 describe('dismiss', () => {
   it('should create DISMISS action', () => {

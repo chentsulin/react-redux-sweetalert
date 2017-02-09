@@ -23,23 +23,6 @@ it('should handle SHOW action', () => {
   });
 });
 
-it('should handle REPLACE action', () => {
-  const prevState = {
-    show: true,
-    title: 'show',
-  };
-  const replaceAction = {
-    type: REPLACE,
-    payload: {
-      title: 'replace',
-    },
-  };
-  expect(reducer(prevState, replaceAction)).toEqual({
-    show: true,
-    title: 'replace',
-  });
-});
-
 it('should handle DISMISS action', () => {
   const prevState = {
     show: true,

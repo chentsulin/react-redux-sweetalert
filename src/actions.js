@@ -1,7 +1,6 @@
 import warning from 'warning';
 
 export const SHOW = '@sweetalert/SHOW';
-export const REPLACE = '@sweetalert/REPLACE';
 export const DISMISS = '@sweetalert/DISMISS';
 
 
@@ -48,13 +47,6 @@ export const sweetalert = payload => {
   warningInvalidProps(payload);
   return {
     type: SHOW,
-    payload,
-  };
-};
-export const replace = payload => {
-  warningInvalidProps(payload);
-  return {
-    type: REPLACE,
     payload,
   };
 };

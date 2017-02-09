@@ -4,7 +4,6 @@ import warning from 'warning';
 import createReducer from './utils/createReducer';
 import {
   SHOW,
-  REPLACE,
   DISMISS,
 } from './actions';
 
@@ -23,8 +22,6 @@ try {
       show: true,
       ...payload,
     }),
-
-    [REPLACE]: (state, { payload }) => state.mergeDeep(payload),
 
     [DISMISS]: () => initialState,
   });

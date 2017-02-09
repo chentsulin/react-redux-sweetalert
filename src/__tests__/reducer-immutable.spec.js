@@ -29,24 +29,6 @@ it('should handle SHOW action', () => {
   });
 });
 
-it('should handle REPLACE action', () => {
-  const immutableReducer = require('../reducer-immutable').default;
-  const prevState = fromJS({
-    show: true,
-    title: 'show',
-  });
-  const replaceAction = {
-    type: REPLACE,
-    payload: {
-      title: 'replace',
-    },
-  };
-  expect(immutableReducer(prevState, replaceAction).toJS()).toEqual({
-    show: true,
-    title: 'replace',
-  });
-});
-
 it('should handle DISMISS action', () => {
   const immutableReducer = require('../reducer-immutable').default;
   const prevState = fromJS({
