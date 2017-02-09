@@ -3,9 +3,9 @@ import {
   SHOW,
   REPLACE,
   DISMISS,
-  showAlert,
-  replaceAlert,
-  dismissAlert,
+  sweetalert,
+  replace,
+  dismiss,
 } from '../actions';
 
 
@@ -13,10 +13,10 @@ beforeEach(() => {
   console.error = jest.fn();
 });
 
-describe('showAlert', () => {
+describe('sweetalert', () => {
   it('should create SHOW action', () => {
     const payload = { title: 'show' };
-    expect(showAlert(payload)).toEqual({
+    expect(sweetalert(payload)).toEqual({
       type: SHOW,
       payload: { title: 'show' },
     });
@@ -28,23 +28,23 @@ describe('showAlert', () => {
       title: 'show',
       onCancel: () => {},
     };
-    showAlert(payload);
+    sweetalert(payload);
     expect(console.error).not.toBeCalled();
   });
 
   it('should warn for invalid props', () => {
     const payload = { titl: 'show' };
-    showAlert(payload);
+    sweetalert(payload);
     expect(console.error).toBeCalledWith(
       'Warning: Property titl is invalid. You can not pass it to SweetAlert',
     );
   });
 });
 
-describe('replaceAlert', () => {
+describe('replace', () => {
   it('should create REPLACE action', () => {
     const payload = { title: 'replace' };
-    expect(replaceAlert(payload)).toEqual({
+    expect(replace(payload)).toEqual({
       type: REPLACE,
       payload: { title: 'replace' },
     });
@@ -52,7 +52,7 @@ describe('replaceAlert', () => {
 
   it('should warn for invalid props', () => {
     const payload = { titl: 'replace' };
-    replaceAlert(payload);
+    replace(payload);
     expect(console.error).toBeCalledWith(
       'Warning: Property titl is invalid. You can not pass it to SweetAlert',
     );
@@ -60,9 +60,9 @@ describe('replaceAlert', () => {
 });
 
 
-describe('dismissAlert', () => {
+describe('dismiss', () => {
   it('should create DISMISS action', () => {
-    expect(dismissAlert()).toEqual({
+    expect(dismiss()).toEqual({
       type: DISMISS,
     });
   });

@@ -44,20 +44,20 @@ function warningInvalidProps(payload) {
   });
 }
 
-export const showAlert = payload => {
+export const sweetalert = payload => {
   warningInvalidProps(payload);
   return {
     type: SHOW,
     payload,
   };
 };
-export const replaceAlert = payload => {
+export const replace = payload => {
   warningInvalidProps(payload);
   return {
     type: REPLACE,
     payload,
   };
 };
-export const dismissAlert = () => ({
+export const dismiss = () => ({
   type: DISMISS,
 });
