@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { fromJS } from 'immutable';
 
 import {
@@ -5,10 +6,13 @@ import {
   REPLACE,
   DISMISS,
 } from '../actions';
-import immutableReducer from '../reducer-immutable';
 
+beforeEach(() => {
+  jest.resetModules();
+});
 
 it('should handle SHOW action', () => {
+  const immutableReducer = require('../reducer-immutable').default;
   const prevState = fromJS({
     show: false,
     title: '',
@@ -26,6 +30,7 @@ it('should handle SHOW action', () => {
 });
 
 it('should handle REPLACE action', () => {
+  const immutableReducer = require('../reducer-immutable').default;
   const prevState = fromJS({
     show: true,
     title: 'show',
@@ -43,6 +48,7 @@ it('should handle REPLACE action', () => {
 });
 
 it('should handle DISMISS action', () => {
+  const immutableReducer = require('../reducer-immutable').default;
   const prevState = fromJS({
     show: true,
     title: 'replace',
@@ -54,5 +60,19 @@ it('should handle DISMISS action', () => {
     show: false,
     title: '',
   });
+});
+
+it('should warning when immutable is not installed', () => {
+  /* eslint-disable no-console */
+  console.error = jest.fn();
+  jest.mock('immutable', () => {
+    throw new Error('Cannot find module \'immutable\'');
+  });
+  const immutableReducer = require('../reducer-immutable').default;
+  immutableReducer();
+  expect(console.error).toBeCalledWith(
+    'Warning: You must install immutable-js for the immutable reducer to work!'
+  );
+  /* eslint-enable no-console */
 });
 
