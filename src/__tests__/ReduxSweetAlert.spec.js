@@ -1,7 +1,8 @@
 import React from 'react';
 import { createStore, combineReducers } from 'redux';
-import { Provider } from 'react-redux';
-import { shallow } from 'enzyme';
+import { combineReducers as combineReducersImmutable } from 'redux-immutable';
+import SweetAlert from 'sweetalert-react';
+import { mount } from 'enzyme';
 
 import ReduxSweetAlert from '../ReduxSweetAlert';
 import reducer from '../reducer';
@@ -13,25 +14,37 @@ it('should be ok when render component with store', () => {
     sweetalert: reducer,
   });
   const store = createStore(rootReducer);
-  const component = shallow(
-    <Provider store={store}>
-      <ReduxSweetAlert />
-    </Provider>
+  const context = {
+    store,
+  };
+  const wrapper = mount(
+    <ReduxSweetAlert />,
+    { context },
   );
 
-  expect(component.find(ReduxSweetAlert)).toHaveLength(1);
+  const component = wrapper.find(SweetAlert);
+
+  expect(component).toHaveLength(1);
+  expect(component.prop('show')).toBe(false);
+  expect(component.prop('title')).toBe('');
 });
 
 it('should be ok when render component with immutable store', () => {
-  const rootReducer = combineReducers({
+  const rootReducer = combineReducersImmutable({
     sweetalert: immutableReducer,
   });
   const store = createStore(rootReducer);
-  const component = shallow(
-    <Provider store={store}>
-      <ReduxSweetAlert />
-    </Provider>
+  const context = {
+    store,
+  };
+  const wrapper = mount(
+    <ReduxSweetAlert />,
+    { context },
   );
 
-  expect(component.find(ReduxSweetAlert)).toHaveLength(1);
+  const component = wrapper.find(SweetAlert);
+
+  expect(component).toHaveLength(1);
+  expect(component.prop('show')).toBe(false);
+  expect(component.prop('title')).toBe('');
 });

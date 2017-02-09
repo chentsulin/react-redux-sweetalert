@@ -1,3 +1,5 @@
+import { fromJS } from 'immutable';
+
 import {
   SHOW,
   REPLACE,
@@ -7,10 +9,10 @@ import immutableReducer from '../reducer-immutable';
 
 
 it('should handle SHOW action', () => {
-  const prevState = {
+  const prevState = fromJS({
     show: false,
     title: '',
-  };
+  });
   const showAction = {
     type: SHOW,
     payload: {
@@ -24,10 +26,10 @@ it('should handle SHOW action', () => {
 });
 
 it('should handle REPLACE action', () => {
-  const prevState = {
+  const prevState = fromJS({
     show: true,
     title: 'show',
-  };
+  });
   const replaceAction = {
     type: REPLACE,
     payload: {
@@ -41,10 +43,10 @@ it('should handle REPLACE action', () => {
 });
 
 it('should handle DISMISS action', () => {
-  const prevState = {
+  const prevState = fromJS({
     show: true,
     title: 'replace',
-  };
+  });
   const dismissAction = {
     type: DISMISS,
   };

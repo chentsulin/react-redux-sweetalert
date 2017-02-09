@@ -24,10 +24,7 @@ try {
       ...payload,
     }),
 
-    [REPLACE]: (state, { payload }) => fromJS({
-      ...state,
-      ...payload,
-    }),
+    [REPLACE]: (state, { payload }) => state.mergeDeep(payload),
 
     [DISMISS]: () => initialState,
   });
