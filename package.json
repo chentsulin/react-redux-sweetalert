@@ -76,6 +76,9 @@
     "sweetalert-react": "^0.4.7",
     "warning": "^3.0.0"
   },
+  "optionalDependencies": {
+    "immutable": "^3.8.1"
+  },
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",

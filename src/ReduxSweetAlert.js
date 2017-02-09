@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SweetAlert from 'sweetalert-react';
 
 const mapStateToProps = state => ({
-  sweetalert: state.sweetalert,
+  sweetalert: typeof state.toJS === 'function' ? state.toJS().sweetalert : state.sweetalert,
 });
 
 class ReduxSweetAlert extends Component {
