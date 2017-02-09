@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import {
   SHOW,
-  DISMISS,
+  CLOSE,
   sweetalert,
-  dismiss,
+  close,
 } from '../actions';
 
 
@@ -82,11 +82,11 @@ describe('sweetalert', () => {
     const action = dispatch.mock.calls[0][0];
     action.payload.onConfirm();
     expect(dispatch.mock.calls[1][0]).toEqual({
-      type: DISMISS,
+      type: CLOSE,
     });
   });
 
-  it('should not dispatch dismiss when closeOnConfirm: false', () => {
+  it('should not dispatch close when closeOnConfirm: false', () => {
     const dispatch = jest.fn();
     const payload = {
       title: 'show',
@@ -108,11 +108,11 @@ describe('sweetalert', () => {
     const action = dispatch.mock.calls[0][0];
     action.payload.onCancel();
     expect(dispatch.mock.calls[1][0]).toEqual({
-      type: DISMISS,
+      type: CLOSE,
     });
   });
 
-  it('should not dispatch dismiss when closeOnCancel: false', () => {
+  it('should not dispatch close when closeOnCancel: false', () => {
     const dispatch = jest.fn();
     const payload = {
       title: 'show',
@@ -134,11 +134,11 @@ describe('sweetalert', () => {
     const action = dispatch.mock.calls[0][0];
     action.payload.onEscapeKey();
     expect(dispatch.mock.calls[1][0]).toEqual({
-      type: DISMISS,
+      type: CLOSE,
     });
   });
 
-  it('should not dispatch dismiss when allowEscapeKey: false', () => {
+  it('should not dispatch close when allowEscapeKey: false', () => {
     const dispatch = jest.fn();
     const payload = {
       title: 'show',
@@ -161,7 +161,7 @@ describe('sweetalert', () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
-  it('should not dispatch dismiss when allowOutsideClick: true', () => {
+  it('should not dispatch close when allowOutsideClick: true', () => {
     const dispatch = jest.fn();
     const payload = {
       title: 'show',
@@ -171,11 +171,11 @@ describe('sweetalert', () => {
     const action = dispatch.mock.calls[0][0];
     action.payload.onOutsideClick();
     expect(dispatch.mock.calls[1][0]).toEqual({
-      type: DISMISS,
+      type: CLOSE,
     });
   });
 
-  it('should dispatch dismiss when timer set', () => {
+  it('should dispatch close when timer set', () => {
     const dispatch = jest.fn();
     const payload = {
       title: 'show',
@@ -184,11 +184,11 @@ describe('sweetalert', () => {
     sweetalert(payload)(dispatch);
     jest.runTimersToTime(1100);
     expect(dispatch.mock.calls[1][0]).toEqual({
-      type: DISMISS,
+      type: CLOSE,
     });
   });
 
-  it('should not dispatch dismiss when no timer option', () => {
+  it('should not dispatch close when no timer option', () => {
     const dispatch = jest.fn();
     const payload = {
       title: 'show',
@@ -208,10 +208,10 @@ describe('sweetalert', () => {
   });
 });
 
-describe('dismiss', () => {
-  it('should create DISMISS action', () => {
-    expect(dismiss()).toEqual({
-      type: DISMISS,
+describe('close', () => {
+  it('should create CLOSE action', () => {
+    expect(close()).toEqual({
+      type: CLOSE,
     });
   });
 });

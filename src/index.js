@@ -1,7 +1,7 @@
 import ReduxSweetAlert from './ReduxSweetAlert';
 import {
   sweetalert,
-  dismiss,
+  close,
 } from './actions';
 
 export default ReduxSweetAlert;
@@ -10,7 +10,7 @@ export { default as immutableReducer } from './reducer-immutable';
 
 export {
   sweetalert,
-  dismiss,
+  close,
 };
 
 export const swal = sweetalert;
@@ -18,5 +18,5 @@ export const swal = sweetalert;
 export const actions = {
   sweetalert,
   swal,
-  dismiss,
+  close,
 };

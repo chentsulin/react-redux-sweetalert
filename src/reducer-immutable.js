@@ -4,7 +4,7 @@ import warning from 'warning';
 import createReducer from './utils/createReducer';
 import {
   SHOW,
-  DISMISS,
+  CLOSE,
 } from './actions';
 
 let reducer; // eslint-disable-line import/no-mutable-exports
@@ -23,7 +23,7 @@ try {
       ...payload,
     }),
 
-    [DISMISS]: () => initialState,
+    [CLOSE]: () => initialState,
   });
 } catch (error) {
   reducer = () => {

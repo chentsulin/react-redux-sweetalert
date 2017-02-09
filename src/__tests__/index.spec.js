@@ -1,7 +1,7 @@
 import ReduxSweetAlert, {
   sweetalert,
   swal,
-  dismiss,
+  close,
   reducer,
   immutableReducer,
   actions,
@@ -12,12 +12,12 @@ it('should export correctly', () => {
   expect(ReduxSweetAlert).toBeDefined();
   expect(sweetalert).toBeDefined();
   expect(swal).toBeDefined();
-  expect(dismiss).toBeDefined();
+  expect(close).toBeDefined();
   expect(reducer).toBeDefined();
   expect(immutableReducer).toBeDefined();
   expect(actions).toEqual({
     sweetalert,
     swal,
-    dismiss,
+    close,
   });
 });

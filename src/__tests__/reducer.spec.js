@@ -1,7 +1,6 @@
 import {
   SHOW,
-  REPLACE,
-  DISMISS,
+  CLOSE,
 } from '../actions';
 import reducer from '../reducer';
 
@@ -23,15 +22,15 @@ it('should handle SHOW action', () => {
   });
 });
 
-it('should handle DISMISS action', () => {
+it('should handle CLOSE action', () => {
   const prevState = {
     show: true,
     title: 'replace',
   };
-  const dismissAction = {
-    type: DISMISS,
+  const closeAction = {
+    type: CLOSE,
   };
-  expect(reducer(prevState, dismissAction)).toEqual({
+  expect(reducer(prevState, closeAction)).toEqual({
     show: false,
     title: '',
   });

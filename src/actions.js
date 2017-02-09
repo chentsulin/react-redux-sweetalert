@@ -2,7 +2,7 @@ import warning from 'warning';
 import compose from 'compose-function';
 
 export const SHOW = '@sweetalert/SHOW';
-export const DISMISS = '@sweetalert/DISMISS';
+export const CLOSE = '@sweetalert/CLOSE';
 
 
 const ALLOWS_KEYS = [
@@ -42,13 +42,13 @@ const ALLOWS_KEYS = [
 
 let _timeout;
 
-export const dismiss = () => {
+export const close = () => {
   if (_timeout) {
     clearTimeout(_timeout);
     _timeout = null;
   }
   return ({
-    type: DISMISS,
+    type: CLOSE,
   });
 };
 
@@ -83,7 +83,7 @@ function createCloseOnConfirmTransform(dispatch) {
     onConfirm: (...args) => {
       if (typeof payload.onConfirm === 'function') payload.onConfirm(...args);
       if (closeOnConfirm !== false) {
-        dispatch(dismiss());
+        dispatch(close());
       }
     },
   });
@@ -95,7 +95,7 @@ function createCloseOnCancelTransform(dispatch) {
     onCancel: (...args) => {
       if (typeof payload.onCancel === 'function') payload.onCancel(...args);
       if (closeOnCancel !== false) {
-        dispatch(dismiss());
+        dispatch(close());
       }
     },
   });
@@ -107,7 +107,7 @@ function createAllowEscapeKeyTransform(dispatch) {
     onEscapeKey: (...args) => {
       if (typeof payload.onEscapeKey === 'function') payload.onEscapeKey(...args);
       if (allowEscapeKey !== false) {
-        dispatch(dismiss());
+        dispatch(close());
       }
     },
   });
@@ -119,7 +119,7 @@ function createAllowOutsideClickTransform(dispatch) {
     onOutsideClick: (...args) => {
       if (typeof payload.onOutsideClick === 'function') payload.onOutsideClick(...args);
       if (allowOutsideClick === true) {
-        dispatch(dismiss());
+        dispatch(close());
       }
     },
   });
@@ -128,7 +128,7 @@ function createAllowOutsideClickTransform(dispatch) {
 function createTimerTransform(dispatch) {
   return ({ timer, ...payload }) => {
     if (timer && typeof timer === 'number') {
-      _timeout = setTimeout(() => dispatch(dismiss()), timer);
+      _timeout = setTimeout(() => dispatch(close()), timer);
     }
     return payload;
   };
