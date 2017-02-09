@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-	applyMiddleware(thunk),
+  applyMiddleware(thunk),
 );
 
 render(
@@ -126,13 +126,41 @@ export default connect(null, {
 
 Checkout full examples [here](./examples).
 
+## Use with ImmutableJS
+
+```js
+import React, { Component } from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { combineReducers } from 'redux-immutable';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { immutableReducer } from 'react-redux-sweetalert';
+
+const rootReducer = combineReducers({
+  sweetalert: immutableReducer,
+});
+
+const store = createStore(
+  rootReducer,
+	applyMiddleware(thunk),
+);
+
+render(
+  <Provider store={store}>
+    <ReduxSweetAlert />
+  </Provider>
+);
+```
+
+See full example [here](https://github.com/chentsulin/react-redux-sweetalert/tree/master/examples/immutable/components/App.js).
+
 ## License
 
 MIT © [C.T. Lin](https://github.com/chentsulin/react-redux-sweetalert)
 
 [npm-image]: https://badge.fury.io/js/react-redux-sweetalert.svg
 [npm-url]: https://npmjs.org/package/react-redux-sweetalert
-[travis-image]: https://travis-ci.org/chentsulin/react-redux-sweetalert.svg
+[travis-image]: https://travis-ci.org/chentsulin/react-redux-sweetalert.svg?branch=master
 [travis-url]: https://travis-ci.org/chentsulin/react-redux-sweetalert
 [coveralls-image]: https://coveralls.io/repos/chentsulin/react-redux-sweetalert/badge.svg?branch=master&service=github
 [coveralls-url]: https://coveralls.io/r/chentsulin/react-redux-sweetalert?branch=master
