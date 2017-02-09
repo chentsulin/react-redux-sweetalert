@@ -59,6 +59,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "redux": "^3.6.0",
+    "redux-immutable": "^3.0.11",
     "rimraf": "^2.5.4",
     "webpack": "^1.14.0"
   },
