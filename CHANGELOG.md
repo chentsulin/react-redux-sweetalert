@@ -1,3 +1,7 @@
+0.2.1 / 2017-02-09
+==================
+- [fix] actions never intended to be public access
+
 0.2.0 / 2017-02-09
 ==================
 - [new] ImmutableJS support
