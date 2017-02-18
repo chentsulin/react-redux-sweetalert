@@ -2,6 +2,7 @@ import ReduxSweetAlert, {
   sweetalert,
   swal,
   close,
+  closeIfShow,
   reducer,
   immutableReducer,
   actions,
@@ -19,5 +20,6 @@ it('should export correctly', () => {
     sweetalert,
     swal,
     close,
+    closeIfShow,
   });
 });

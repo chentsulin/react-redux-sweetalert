@@ -52,6 +52,20 @@ export const close = () => {
   });
 };
 
+export const closeIfShow = () => {
+  if (_timeout) {
+    clearTimeout(_timeout);
+    _timeout = null;
+  }
+  return (dispatch, getState) => {
+    if (getState().sweetalert.show) {
+      dispatch({
+        type: CLOSE,
+      });
+    }
+  };
+};
+
 
 function getInvalidProps(payload) {
   return Object.keys(payload).filter(key => ALLOWS_KEYS.indexOf(key) === -1);
