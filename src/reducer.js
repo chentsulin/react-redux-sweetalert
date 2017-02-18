@@ -1,8 +1,7 @@
 import createReducer from './utils/createReducer';
 import {
   SHOW,
-  REPLACE,
-  DISMISS,
+  CLOSE,
 } from './actions';
 
 
@@ -18,10 +17,5 @@ export default createReducer(initialState, {
     ...payload,
   }),
 
-  [REPLACE]: (state, { payload }) => ({
-    ...state,
-    ...payload,
-  }),
-
-  [DISMISS]: () => initialState,
+  [CLOSE]: () => initialState,
 });

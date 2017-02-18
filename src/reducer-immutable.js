@@ -4,8 +4,7 @@ import warning from 'warning';
 import createReducer from './utils/createReducer';
 import {
   SHOW,
-  REPLACE,
-  DISMISS,
+  CLOSE,
 } from './actions';
 
 let reducer; // eslint-disable-line import/no-mutable-exports
@@ -24,9 +23,7 @@ try {
       ...payload,
     }),
 
-    [REPLACE]: (state, { payload }) => state.mergeDeep(payload),
-
-    [DISMISS]: () => initialState,
+    [CLOSE]: () => initialState,
   });
 } catch (error) {
   reducer = () => {

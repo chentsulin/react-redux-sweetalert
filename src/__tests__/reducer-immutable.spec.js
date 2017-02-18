@@ -3,8 +3,7 @@ import { fromJS } from 'immutable';
 
 import {
   SHOW,
-  REPLACE,
-  DISMISS,
+  CLOSE,
 } from '../actions';
 
 beforeEach(() => {
@@ -29,34 +28,16 @@ it('should handle SHOW action', () => {
   });
 });
 
-it('should handle REPLACE action', () => {
-  const immutableReducer = require('../reducer-immutable').default;
-  const prevState = fromJS({
-    show: true,
-    title: 'show',
-  });
-  const replaceAction = {
-    type: REPLACE,
-    payload: {
-      title: 'replace',
-    },
-  };
-  expect(immutableReducer(prevState, replaceAction).toJS()).toEqual({
-    show: true,
-    title: 'replace',
-  });
-});
-
-it('should handle DISMISS action', () => {
+it('should handle CLOSE action', () => {
   const immutableReducer = require('../reducer-immutable').default;
   const prevState = fromJS({
     show: true,
     title: 'replace',
   });
-  const dismissAction = {
-    type: DISMISS,
+  const closeAction = {
+    type: CLOSE,
   };
-  expect(immutableReducer(prevState, dismissAction).toJS()).toEqual({
+  expect(immutableReducer(prevState, closeAction).toJS()).toEqual({
     show: false,
     title: '',
   });

@@ -11,11 +11,13 @@ class Main extends Component {
     return (
       <div>
         <button
-          onClick={() => this.props.swal(
-            'Good job!',
-            'You clicked the button!',
-            'success',
-          )}
+          onClick={() => this.props.swal({
+            title: 'Sorry!',
+            text: 'Close after 3 seconds!',
+            type: 'error',
+            timer: 3000,
+            onClose: () => console.log('closed!'),
+          })}
         >Alert</button>
         <ReduxSweetAlert />
       </div>
