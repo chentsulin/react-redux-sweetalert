@@ -70,13 +70,19 @@ Checkout full examples [here](https://github.com/chentsulin/react-redux-sweetale
   inputValue?: string,
   inputPlaceholder?: string,
   showLoaderOnConfirm?: boolean,
-
-  // custom option
-  timer?: number,
+	
+	timer?: number,
   closeOnConfirm?: boolean,
   closeOnCancel?: boolean,
   allowEscapeKey?: boolean,
   allowOutsideClick?: boolean,
+
+  // custom option
+	onConfirm?: Function,
+  onCancel?: Function,
+  onClose?: Function,
+  onEscapeKey?: Function,
+  onOutsideClick?: Function,
 }
 ```
 
