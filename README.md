@@ -93,7 +93,7 @@ Checkout full examples [here](https://github.com/chentsulin/react-redux-sweetale
 ```js
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ReduxSweetAlert, { showAlert, dismissAlert } from 'react-redux-sweetalert'; // eslint-disable-line
+import ReduxSweetAlert, { swal, close } from 'react-redux-sweetalert'; // eslint-disable-line
 
 
 class Main extends Component {
@@ -105,10 +105,10 @@ class Main extends Component {
     return (
       <div>
         <button
-          onClick={() => this.props.showAlert({
+          onClick={() => this.props.swal({
             title: 'Demo',
             text: 'SweetAlert in React',
-            onConfirm: this.props.dismissAlert,
+            onConfirm: this.props.close,
           })}
         >Alert</button>
         <ReduxSweetAlert />
@@ -119,8 +119,8 @@ class Main extends Component {
 
 
 export default connect(null, {
-  showAlert,
-  dismissAlert,
+  swal,
+  close,
 })(Main);
 ```
 
