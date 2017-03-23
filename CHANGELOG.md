@@ -1,3 +1,18 @@
+1.0.0 / 2017-03-23
+==================
+- Renamed `showAlert` to `swal`
+- Removed `replaceAlert`
+- Renamed `dismissAlert` to `close`
+- supported `showConfirmButton`
+- supported `showCancelButton`
+- supported `allowEscapeKey`
+- supported `allowOutsideClick`
+- supported `timer`
+- supported shortcut:
+```js
+sweetalert("Oops...", "Something went wrong!", "error");
+```
+
 0.2.1 / 2017-02-09
 ==================
 - [fix] actions never intended to be public access
