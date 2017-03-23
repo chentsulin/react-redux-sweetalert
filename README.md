@@ -72,21 +72,19 @@ Checkout full examples [here](https://github.com/chentsulin/react-redux-sweetale
   showLoaderOnConfirm?: boolean,
 
   // custom option
-  onConfirm?: Function,
-  onCancel?: Function,
-  onClose?: Function,
-  onEscapeKey?: Function,
-  onOutsideClick?: Function,
+  timer?: number,
+  closeOnConfirm?: boolean,
+  closeOnCancel?: boolean,
+  allowEscapeKey?: boolean,
+  allowOutsideClick?: boolean,
 }
 ```
 
 ### actions
 
-#### showAlert(payload: Payload)
+#### swal(payload: Payload)
 
-#### replaceAlert(payload: Payload)
-
-#### dismissAlert()
+#### close()
 
 ## Examples
 
@@ -98,8 +96,8 @@ import ReduxSweetAlert, { swal, close } from 'react-redux-sweetalert'; // eslint
 
 class Main extends Component {
   static propTypes = {
-    dismissAlert: PropTypes.func.isRequired,
-    showAlert: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
+    swal: PropTypes.func.isRequired,
   };
   render() {
     return (
@@ -142,7 +140,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-	applyMiddleware(thunk),
+  applyMiddleware(thunk),
 );
 
 render(
