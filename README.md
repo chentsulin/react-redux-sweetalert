@@ -71,14 +71,14 @@ Checkout full examples [here](https://github.com/chentsulin/react-redux-sweetale
   inputPlaceholder?: string,
   showLoaderOnConfirm?: boolean,
 	
-	timer?: number,
+  timer?: number,
   closeOnConfirm?: boolean,
   closeOnCancel?: boolean,
   allowEscapeKey?: boolean,
   allowOutsideClick?: boolean,
 
   // custom option
-	onConfirm?: Function,
+  onConfirm?: Function,
   onCancel?: Function,
   onClose?: Function,
   onEscapeKey?: Function,
@@ -88,6 +88,7 @@ Checkout full examples [here](https://github.com/chentsulin/react-redux-sweetale
 
 ### actions
 
+#### swal(title: string, text: ?string, type: ?string)
 #### swal(payload: Payload)
 
 #### close()
