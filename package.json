@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "compose-function": "^3.0.3",
+    "prop-types": "^15.5.10",
     "react-redux": "^5.0.2",
     "sweetalert-react": "^0.4.7",
     "warning": "^3.0.0"
