@@ -1,3 +1,7 @@
+1.0.1 / 2017-06-22
+==================
+- [fix] use `prop-types` to avoid warning on React >=15.15
+
 1.0.0 / 2017-03-23
 ==================
 - Renamed `showAlert` to `swal`
